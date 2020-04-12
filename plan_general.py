@@ -48,7 +48,7 @@ def feasibility_check(path, obc, IsInCollision, step_sz=DEFAULT_STEP):
             return 0
     return 1
 
-def neural_plan(mpNet, path, obc, obs, IsInCollision, normalize, unnormalize, init_plan_flag, step_sz=DEFAULT_STEP, time_flag=False):
+def neural_plan(mpNet, path, obc, obs, IsInCollision, normalize, unnormalize, init_plan_flag, step_sz=DEFAULT_STEP):
     if init_plan_flag:
         # if it is the initial plan, then we just plan from start to goal
         MAX_LENGTH = 80
@@ -75,7 +75,7 @@ def neural_plan(mpNet, path, obc, obs, IsInCollision, normalize, unnormalize, in
         else:
             # plan mini path
             mini_path = neural_mini_planner(mpNet, start, goal, obc, obs, IsInCollision, \
-                                                normalize, unnormalize, MAX_LENGTH, step_sz=step_sz)
+                                            normalize, unnormalize, MAX_LENGTH, step_sz=step_sz)
             if mini_path:
                 # if mini plan is successful
                 new_path += removeCollision(mini_path[1:], obc, IsInCollision)  # take out start point
@@ -96,7 +96,6 @@ def neural_mini_planner(mpNet, start, goal, obc, obs, IsInCollision, normalize, 
     target_reached=0
     tree=0
     new_path = []
-    time_norm = 0.
     while target_reached==0 and itr<MAX_LENGTH:
         itr=itr+1  # prevent the path from being too long
         if tree==0:
@@ -105,7 +104,6 @@ def neural_mini_planner(mpNet, start, goal, obc, obs, IsInCollision, normalize, 
             #ip1=torch.cat((obs,start,goal)).unsqueeze(0)
             time0 = time.time()
             ip1=normalize(ip1)
-            time_norm += time.time() - time0
             ip1=to_var(ip1)
             ob1=to_var(ob1)
             start=mpNet(ip1,ob1).squeeze(0)
@@ -113,7 +111,6 @@ def neural_mini_planner(mpNet, start, goal, obc, obs, IsInCollision, normalize, 
             start=start.data.cpu()
             time0 = time.time()
             start = unnormalize(start)
-            time_norm += time.time() - time0
             pA.append(start)
             tree=1
         else:
@@ -122,7 +119,6 @@ def neural_mini_planner(mpNet, start, goal, obc, obs, IsInCollision, normalize, 
             #ip2=torch.cat((obs,goal,start)).unsqueeze(0)
             time0 = time.time()
             ip2=normalize(ip2)
-            time_norm += time.time() - time0
             ip2=to_var(ip2)
             ob2=to_var(ob2)
             goal=mpNet(ip2,ob2).squeeze(0)
@@ -130,7 +126,6 @@ def neural_mini_planner(mpNet, start, goal, obc, obs, IsInCollision, normalize, 
             goal=goal.data.cpu()
             time0 = time.time()
             goal = unnormalize(goal)
-            time_norm += time.time() - time0
             pB.append(goal)
             tree=0
         target_reached=steerTo(start, goal, obc, IsInCollision, step_sz=step_sz)
