@@ -112,7 +112,7 @@ def main(args):
             # write the path
             path = [p.numpy() for p in path]
             path = np.array(path)
-            np.savetxt(args.model_path+'path_%d.txt' % (j), path, fmt='%f')
+            np.savetxt(args.result_path+'path_%d.txt' % (j), path, fmt='%f')
             fes_path.append(fp)
             print('env %d accuracy up to now: %f' % (i, (float(np.sum(fes_path))/ np.sum(valid_path))))
         time_env.append(time_path)
@@ -122,7 +122,7 @@ def main(args):
         valid_env.append(valid_path)
         print('accuracy up to now: %f' % (float(np.sum(fes_env)) / np.sum(valid_env)))
 
-    fname = os.path.join(args.model_path,'accuracy_epoch_%d.txt' % (args.start_epoch))
+    fname = os.path.join(args.result_path,'accuracy_epoch_%d.txt' % (args.start_epoch))
     f = open(fname, 'w')
     f.write(str(test_suc_rate))
     f.close()
