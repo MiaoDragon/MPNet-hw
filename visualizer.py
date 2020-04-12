@@ -9,7 +9,7 @@ def main(args):
     # visualize point cloud (obstacles)
     obs = []
     for i in range(s,s+N):
-    	temp=np.fromfile('data/obs_cloud/obc'+str(i)+'.dat')
+    	temp=np.fromfile(args.obs_file)
     	obs.append(temp)
     obs = np.array(obs).astype(np.float32)
 
@@ -33,7 +33,8 @@ def main(args):
 
 parser = argparse.ArgumentParser()
 # for training
-parser.add_argument('--path_file', type=str, default='./data/path_0.txt',help='path for saving trained models')
+parser.add_argument('--obs_file', type=str, default='./data/obs_cloud/obc_0.dat',help='obstacle point cloud file')
+parser.add_argument('--path_file', type=str, default='./data/path_0.txt',help='path file')
 args = parser.parse_args()
 print(args)
 main(args)
