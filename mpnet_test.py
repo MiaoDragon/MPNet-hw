@@ -84,7 +84,7 @@ def main(args):
             time0 = time.time()
             time_norm = 0.
             fp = 0 # indicator for feasibility
-            print ("plannning: env="+str(i)+" path="+str(j))
+            print ("plannning: env="+str(args.s+i)+" path="+str(args.sp+j))
             if path_lengths[i][j]<2:
                 # the data might have paths of length smaller than 2, which are invalid
                 # invalid, feasible = 0, and path count = 0
@@ -112,13 +112,13 @@ def main(args):
             # write the path
             path = [p.numpy() for p in path]
             path = np.array(path)
-            path_file = args.result_path+'env_%d/' % (i)
+            path_file = args.result_path+'env_%d/' % (i+args.s)
             if not os.path.exists(path_file):
                 # create directory if not exist
                 os.makedirs(path_file)
-            np.savetxt(path_file + 'path_%d.txt' % (j), path, fmt='%f')
+            np.savetxt(path_file + 'path_%d.txt' % (j+args.sp), path, fmt='%f')
             fes_path.append(fp)
-            print('env %d accuracy up to now: %f' % (i, (float(np.sum(fes_path))/ np.sum(valid_path))))
+            print('env %d accuracy up to now: %f' % (i+args.s, (float(np.sum(fes_path))/ np.sum(valid_path))))
         time_env.append(time_path)
         time_total += time_path
         print('average test time up to now: %f' % (np.mean(time_total)))
