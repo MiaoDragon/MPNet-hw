@@ -19,7 +19,7 @@ def main(args):
     # visualize path
     path = np.loadtxt(args.path_file)
     print(path)
-    path = path.reshape(len(path)//2, 2)
+    path = path.reshape(-1, 2)
     path_x = []
     path_y = []
     for i in range(len(path)):
