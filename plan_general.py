@@ -52,7 +52,7 @@ def neural_plan(mpNet, path, obc, obs, IsInCollision, normalize, unnormalize, in
     if init_plan_flag:
         # if it is the initial plan, then we just plan from start to goal
         MAX_LENGTH = 80
-        mini_path, time_d = neural_mini_planner(mpNet, path[0], path[-1], obc, obs, IsInCollision, \
+        mini_path = neural_mini_planner(mpNet, path[0], path[-1], obc, obs, IsInCollision, \
                                             normalize, unnormalize, MAX_LENGTH, step_sz=step_sz)
         if mini_path:
             # if mini plan is successful
