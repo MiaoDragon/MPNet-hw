@@ -18,13 +18,14 @@ def main(args):
 
     # visualize path
     path = np.loadtxt(args.path_file)
+    print(path)
     path = path.reshape(len(path)//2, 2)
     path_x = []
     path_y = []
     for i in range(len(path)):
         path_x.append(path[i][0])
         path_y.append(path[i][1])
-    print(path)
+
     plt.plot(path_x, path_y, c='red')
 
     plt.show()
