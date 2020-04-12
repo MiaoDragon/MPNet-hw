@@ -62,6 +62,9 @@ def main(args):
     test_data = load_test_dataset(N=args.N, NP=args.NP, s=args.s, sp=args.sp, folder=args.data_path)
     obc, obs, paths, path_lengths = test_data
 
+    normalize_func=lambda x: normalize(x, args.world_size)
+    unnormalize_func=lambda x: unnormalize(x, args.world_size)
+
     # test on dataset
     test_suc_rate = 0.
 
