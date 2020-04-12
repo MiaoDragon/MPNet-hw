@@ -9,8 +9,8 @@ def main(args):
     # visualize point cloud (obstacles)
     obs = []
     temp=np.fromfile(args.obs_file)
-    obs.append(temp)
-    obs = np.array(obs).astype(np.float32)
+    obc.append(temp)
+    obc = np.array(obc).astype(np.float32)
 
     plt.scatter(obc[:,0], obc[:,1])
 
