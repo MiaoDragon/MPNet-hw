@@ -69,6 +69,7 @@ def main(args):
     test_suc_rate = 0.
     DEFAULT_STEP = 0.01
     # for statistics
+    time_total = []
     time_env = []
     valid_env = []
     fes_env = []
