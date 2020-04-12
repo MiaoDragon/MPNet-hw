@@ -106,7 +106,7 @@ def main(args):
             # write the path
             path = [p.numpy() for p in path]
             path = np.array(path)
-            np.savetxt(args.mdoel_path+'path_%d.txt' % (j), path, fmt='%f')
+            np.savetxt(args.model_path+'path_%d.txt' % (j), path, fmt='%f')
             fes_path.append(fp)
             print('env %d accuracy up to now: %f' % (i, (float(np.sum(fes_path))/ np.sum(valid_path))))
         time_env.append(time_path)
