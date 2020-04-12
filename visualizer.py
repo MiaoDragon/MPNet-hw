@@ -12,6 +12,7 @@ def main(args):
     obs.append(temp)
     obs = np.array(obs).astype(np.float32)
 
+    print(obs)
     plt.scatter(obs[:,0], obs[:,1])
 
 
@@ -25,6 +26,7 @@ def main(args):
     for i in range(len(path)):
         path_x.append(path[i][0])
         path_y.append(path[i][1])
+    print(path)
     plt.plot(path_x, path_y)
 
     plt.show()
