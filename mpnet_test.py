@@ -67,7 +67,7 @@ def main(args):
 
     # test on dataset
     test_suc_rate = 0.
-
+    DEFAULT_STEP = 0.01
     for i in range(len(paths)):
         time_path = []
         fes_path = []   # 1 for feasible, 0 for not feasible
@@ -92,9 +92,6 @@ def main(args):
                 step_sz = DEFAULT_STEP
                 MAX_NEURAL_REPLAN = 11
                 for t in range(MAX_NEURAL_REPLAN):
-                # adaptive step size on replanning attempts
-                # 1.2, 0.5, 0.1 are for simple env
-                # 0.04, 0.03, 0.02 are for home env
                     path = neural_plan(mpNet, path, obc[i], obs[i], IsInCollision, \
                                         normalize_func, unnormalize_func, t==0, step_sz=step_sz)
                     if feasibility_check(path, obc[i], IsInCollision, step_sz=0.01):
