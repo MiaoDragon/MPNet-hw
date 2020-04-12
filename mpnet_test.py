@@ -131,7 +131,7 @@ def main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model_path', type=str, default='./models/prev/',help='folder of trained model')
+    parser.add_argument('--model_path', type=str, default='./models/',help='folder of trained model')
     parser.add_argument('--N', type=int, default=100)
     parser.add_argument('--NP', type=int, default=200)
     parser.add_argument('--s', type=int, default=0)
@@ -145,7 +145,7 @@ if __name__ == '__main__':
     parser.add_argument('--device', type=int, default=0, help='cuda device')
     parser.add_argument('--data_path', type=str, default='./data/')
     parser.add_argument('--result_path', type=str, default='./results/',help='path for saving trained models')
-    parser.add_argument('--start_epoch', type=int, default=1)
+    parser.add_argument('--start_epoch', type=int, default=50)
     parser.add_argument('--env_type', type=str, default='s2d', help='s2d for simple 2d, c2d for complex 2d')
     parser.add_argument('--world_size', nargs='+', type=float, default=20., help='boundary of world')
     parser.add_argument('--opt', type=str, default='Adagrad')
