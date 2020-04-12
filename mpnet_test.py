@@ -137,7 +137,7 @@ if __name__ == '__main__':
     parser.add_argument('--mlp_input_size', type=int , default=28+4, help='dimension of the input vector')
     parser.add_argument('--output_size', type=int , default=2, help='dimension of the input vector')
     parser.add_argument('--device', type=int, default=0, help='cuda device')
-    parser.add_argument('--data_path', type=str, default='../data/simple/')
+    parser.add_argument('--data_path', type=str, default='./data/')
     parser.add_argument('--start_epoch', type=int, default=1)
     parser.add_argument('--env_type', type=str, default='s2d', help='s2d for simple 2d, c2d for complex 2d')
     parser.add_argument('--world_size', nargs='+', type=float, default=20., help='boundary of world')
