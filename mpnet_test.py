@@ -111,7 +111,9 @@ def main(args):
                 time_path.append(time1)
                 print('test time: %f' % (time1))
             # write the path
-            path = [p.numpy() for p in path]
+            if type(path[0]) is not np.ndarry:
+                # it is torch tensor, convert to numpy
+                path = [p.numpy() for p in path]
             path = np.array(path)
             path_file = args.result_path+'env_%d/' % (i+args.s)
             if not os.path.exists(path_file):
