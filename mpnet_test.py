@@ -111,7 +111,7 @@ def main(args):
                 time_path.append(time1)
                 print('test time: %f' % (time1))
             # write the path
-            if type(path[0]) is not np.ndarry:
+            if type(path[0]) is not np.ndarray:
                 # it is torch tensor, convert to numpy
                 path = [p.numpy() for p in path]
             path = np.array(path)
