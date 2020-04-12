@@ -112,7 +112,11 @@ def main(args):
             # write the path
             path = [p.numpy() for p in path]
             path = np.array(path)
-            np.savetxt(args.result_path+'path_%d.txt' % (j), path, fmt='%f')
+            path_file = args.result_path+'env_%d/' % (i)
+            if not os.path.exists(path_file):
+                # create directory if not exist
+                os.makedirs(path_file)
+            np.savetxt(path_file + 'path_%d.txt' % (j), path, fmt='%f')
             fes_path.append(fp)
             print('env %d accuracy up to now: %f' % (i, (float(np.sum(fes_path))/ np.sum(valid_path))))
         time_env.append(time_path)
