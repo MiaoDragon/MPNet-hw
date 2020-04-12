@@ -60,7 +60,7 @@ def main(args):
     # load test data
     print('loading...')
     test_data = load_test_dataset(N=args.N, NP=args.NP, s=args.s, sp=args.sp, folder=args.data_path)
-
+    obc, obs, paths, path_lengths = test_data
 
     # test on dataset
     test_suc_rate = 0.
