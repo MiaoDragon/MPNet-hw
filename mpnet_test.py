@@ -122,10 +122,9 @@ def main(args):
         valid_env.append(valid_path)
         print('accuracy up to now: %f' % (float(np.sum(fes_env)) / np.sum(valid_env)))
 
-    seen_test_suc_rate = seen_test_suc_rate / T
     fname = os.path.join(args.model_path,'accuracy_epoch_%d.txt' % (args.start_epoch))
     f = open(fname, 'w')
-    f.write(str(seen_test_suc_rate))
+    f.write(str(test_suc_rate))
     f.close()
 
 if __name__ == '__main__':
