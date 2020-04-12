@@ -35,7 +35,6 @@ def main(args):
         unnormalize = plan_s2d.unnormalize
         CAE = CAE_2d
         MLP = model.MLP
-        eval_tasks = gem_eval.eval_tasks
 
     mpNet = End2EndMPNet(args.total_input_size, args.AE_input_size, args.mlp_input_size, \
                 args.output_size, CAE, MLP)
