@@ -10,10 +10,8 @@ def main(args):
     obs = []
     temp=np.fromfile(args.obs_file)
     obs.append(temp)
-    obs = np.array(obs).astype(np.float32)
-
-    print(obs)
-    plt.scatter(obs[:,0], obs[:,1])
+    obs = np.array(obs).astype(np.float32).reshape(-1,2)
+    plt.scatter(obs[:,0], obs[:,1], c='blue')
 
 
 
@@ -27,7 +25,7 @@ def main(args):
         path_x.append(path[i][0])
         path_y.append(path[i][1])
     print(path)
-    plt.plot(path_x, path_y)
+    plt.plot(path_x, path_y, c='red')
 
     plt.show()
 
