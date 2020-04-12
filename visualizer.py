@@ -26,7 +26,7 @@ def main(args):
         path_x.append(path[i][0])
         path_y.append(path[i][1])
 
-    plt.plot(path_x, path_y, 'ro')
+    plt.plot(path_x, path_y, c='r', marker='o')
 
     plt.show()
 
