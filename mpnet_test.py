@@ -129,11 +129,11 @@ def main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model_path', type=str, default='./models/',help='folder of trained model')
-    parser.add_argument('--N', type=int, default=1)
-    parser.add_argument('--NP', type=int, default=1)
+    parser.add_argument('--model_path', type=str, default='./models/prev/',help='folder of trained model')
+    parser.add_argument('--N', type=int, default=100)
+    parser.add_argument('--NP', type=int, default=200)
     parser.add_argument('--s', type=int, default=0)
-    parser.add_argument('--sp', type=int, default=0)
+    parser.add_argument('--sp', type=int, default=4000)
 
     # Model parameters
     parser.add_argument('--total_input_size', type=int, default=2800+4, help='dimension of total input')
