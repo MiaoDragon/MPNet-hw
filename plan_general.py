@@ -48,6 +48,21 @@ def feasibility_check(path, obc, IsInCollision, step_sz=DEFAULT_STEP):
             return 0
     return 1
 
+def lvc(path, obc, IsInCollision, step_sz=DEFAULT_STEP):
+    # lazy vertex contraction
+    for i in range(0,len(path)-1):
+        for j in range(len(path)-1,i+1,-1):
+            ind=0
+            ind=steerTo(path[i],path[j],obc,IsInCollision,step_sz=step_sz)
+            if ind==1:
+                pc=[]
+                for k in range(0,i+1):
+                    pc.append(path[k])
+                for k in range(j,len(path)):
+                    pc.append(path[k])
+                return lvc(pc,obc,IsInCollision,step_sz=step_sz)
+    return path
+    
 def neural_plan(mpNet, path, obc, obs, IsInCollision, normalize, unnormalize, init_plan_flag, step_sz=DEFAULT_STEP):
     if init_plan_flag:
         # if it is the initial plan, then we just plan from start to goal
