@@ -42,7 +42,7 @@ def main(args):
     if not os.path.exists(args.model_path):
         os.makedirs(args.model_path)
     # load previously trained model if start epoch > 0
-    model_path='mpnet_epoch_%d.pkl' %(args.start_epoch)
+    model_path='mpnet.pkl' %(args.start_epoch)
     if args.start_epoch > 0:
         load_net_state(mpNet, os.path.join(args.model_path, model_path))
         torch_seed, np_seed, py_seed = load_seed(os.path.join(args.model_path, model_path))
@@ -138,7 +138,7 @@ if __name__ == '__main__':
     parser.add_argument('--output_size', type=int , default=2, help='dimension of the input vector')
     parser.add_argument('--device', type=int, default=0, help='cuda device')
     parser.add_argument('--data_path', type=str, default='../data/simple/')
-    parser.add_argument('--start_epoch', type=int, default=0)
+    parser.add_argument('--start_epoch', type=int, default=1)
     parser.add_argument('--env_type', type=str, default='s2d', help='s2d for simple 2d, c2d for complex 2d')
     parser.add_argument('--world_size', nargs='+', type=float, default=20., help='boundary of world')
     parser.add_argument('--opt', type=str, default='Adagrad')
