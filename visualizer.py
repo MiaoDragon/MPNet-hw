@@ -8,9 +8,8 @@ import argparse
 def main(args):
     # visualize point cloud (obstacles)
     obs = []
-    for i in range(s,s+N):
-    	temp=np.fromfile(args.obs_file)
-    	obs.append(temp)
+	temp=np.fromfile(args.obs_file)
+	obs.append(temp)
     obs = np.array(obs).astype(np.float32)
 
     plt.scatter(obc[:,0], obc[:,1])
