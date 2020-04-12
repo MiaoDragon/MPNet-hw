@@ -68,6 +68,11 @@ def main(args):
     # test on dataset
     test_suc_rate = 0.
     DEFAULT_STEP = 0.01
+    # for statistics
+    time_env = []
+    valid_env = []
+    fes_env = []
+
     for i in range(len(paths)):
         time_path = []
         fes_path = []   # 1 for feasible, 0 for not feasible
