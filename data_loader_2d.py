@@ -3,15 +3,12 @@ import torch.utils.data as data
 import os
 import pickle
 import numpy as np
-#import nltk
-#from PIL import Image
 import os.path
 import random
 from torch.autograd import Variable
 import torch.nn as nn
 import math
-import gc
-#N=number of environments; NP=Number of Paths
+
 def load_train_dataset(N=100,NP=4000,folder='../data/simple/',s=0):
 	# load data as [path]
 	# for each path, it is
@@ -69,6 +66,7 @@ def load_train_dataset(N=100,NP=4000,folder='../data/simple/',s=0):
 	targets = list(targets)
 	env_indices = list(env_indices)
 	return obs, dataset, targets, env_indices
+
 #N=number of environments; NP=Number of Paths; s=starting environment no.; sp=starting_path_no
 #Unseen_environments==> N=10, NP=2000,s=100, sp=0
 #seen_environments==> N=100, NP=200,s=0, sp=4000

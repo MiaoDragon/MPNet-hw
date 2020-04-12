@@ -127,14 +127,9 @@ def main(args):
         valid_env.append(valid_path)
         print('accuracy up to now: %f' % (float(np.sum(fes_env)) / np.sum(valid_env)))
 
-    fname = os.path.join(args.result_path,'accuracy_epoch_%d.txt' % (args.start_epoch))
-    f = open(fname, 'w')
-    f.write(str(test_suc_rate))
-    f.close()
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model_path', type=str, default='./models/',help='path for saving trained models')
+    parser.add_argument('--model_path', type=str, default='./models/',help='folder of trained model')
     parser.add_argument('--N', type=int, default=1)
     parser.add_argument('--NP', type=int, default=1)
     parser.add_argument('--s', type=int, default=0)

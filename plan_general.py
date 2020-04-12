@@ -62,7 +62,7 @@ def lvc(path, obc, IsInCollision, step_sz=DEFAULT_STEP):
                     pc.append(path[k])
                 return lvc(pc,obc,IsInCollision,step_sz=step_sz)
     return path
-    
+
 def neural_plan(mpNet, path, obc, obs, IsInCollision, normalize, unnormalize, init_plan_flag, step_sz=DEFAULT_STEP):
     if init_plan_flag:
         # if it is the initial plan, then we just plan from start to goal

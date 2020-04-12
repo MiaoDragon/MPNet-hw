@@ -19,6 +19,10 @@ class End2EndMPNet(nn.Module):
             self.opt = opt(list(self.encoder.parameters())+list(self.mlp.parameters()), lr=lr)
         else:
             self.opt = opt(list(self.encoder.parameters())+list(self.mlp.parameters()), lr=lr, momentum=momentum)
+
+    def loss(self, pred, truth):
+        return self.mse(pred, truth)
+
     def forward(self, x, obs):
         # xobs is the input to encoder
         # x is the input to mlp
@@ -26,3 +30,11 @@ class End2EndMPNet(nn.Module):
         z = self.encoder(obs)
         mlp_in = torch.cat((z,x), 1)    # keep the first dim the same (# samples)
         return self.mlp(mlp_in)
+
+    def step(self, x, obs, y):
+        # given a batch of data, optimize the parameters by one gradient descent step
+        # assume here x and y are torch tensors, and have been
+        self.zero_grad()
+        loss = self.loss(self.forward(x, obs), y)
+        loss.backward()
+        self.opt.step()
