@@ -16,3 +16,4 @@
     * for training the model.
 
 * To run: create results, models, and data folder, and put the data into data folder. Execute mpnet_test.py to generate plan.
+* Tested with python3.5.
