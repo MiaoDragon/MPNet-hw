@@ -11,3 +11,8 @@
 * visualizer.py
     * obs_file: path of the obstacle point cloud file
     * path_file: path to the stored planned path file
+
+* mpnet_Train.py:
+    * for training the model.
+
+* To run: create results, models, and data folder, and put the data into data folder. Execute mpnet_test.py to generate plan.
